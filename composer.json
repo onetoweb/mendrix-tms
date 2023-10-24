@@ -18,7 +18,6 @@
     "require": {
         "php": ">=7.1.0",
         "guzzlehttp/guzzle" : "^6.0 || ^7.0",
-        "spatie/array-to-xml": "^2.15",
         "twig/twig": "^1.40|^2.9|^3.0"
     },
     "require-dev": {
