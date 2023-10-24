@@ -1,0 +1,17 @@
+{% apply spaceless %}
+<?xml version="1.0"?>
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+    <SOAP-ENV:Header SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:NS1="urn:UCoSoapDispatcherBase">
+        <NS1:TAuthenticationHeader xsi:type="NS1:TAuthenticationHeader">
+            <UserName xsi:type="xsd:string">{{ username }}</UserName>
+            <Password xsi:type="xsd:string">{{ password }}</Password>
+        </NS1:TAuthenticationHeader>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+        <NS2:ExecuteRequest xmlns:NS2="urn:UCoSoapDispatcherCustomLink-ICustomLinkSoap">
+            <ARequest xsi:type="xsd:string">{{ request|format_request|raw }}</ARequest>
+        </NS2:ExecuteRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+{% endapply %}

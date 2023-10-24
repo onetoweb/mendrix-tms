@@ -1,0 +1,10 @@
+{% apply spaceless %}
+<?xml version="1.0" encoding="windows-1252"?>
+
+<EoCustomLinkRequestOrdersNormal Type="TEoCustomLinkRequestOrdersNormal" xsi:noNamespaceSchemaLocation="GdxEoStructures.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Nested>{{ request.nested|format_value }}</Nested>
+    <Filter Type="TEoFilterOrdersNormal">
+        <KeysExplicitAsCsv>{{ request.ids|join(',') }}</KeysExplicitAsCsv>
+    </Filter>
+</EoCustomLinkRequestOrdersNormal>
+{% endapply %}

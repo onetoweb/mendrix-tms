@@ -1,0 +1,13 @@
+{% apply spaceless %}
+<?xml version="1.0" encoding="windows-1252"?>
+
+<EoCustomLinkRequestOrdersNormalIds Type="TEoCustomLinkRequestOrdersNormalIds" xsi:noNamespaceSchemaLocation="GdxEoStructures.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Nested>{{ request.nested|format_value }}</Nested>
+    <Filter Type="TEoFilterOrdersNormal">
+        <PeriodBegin>{{ request.filter.period_begin|format_value }}</PeriodBegin>
+        <PeriodEnd>{{ request.filter.period_end|format_value }}</PeriodEnd>
+        <ClientNo>{{ request.filter.client_no|format_value }}</ClientNo>
+        <OperatorId>{{ request.filter.operator_id|format_value }}</OperatorId>
+    </Filter>
+</EoCustomLinkRequestOrdersNormalIds>
+{% endapply %}

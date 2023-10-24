@@ -1,0 +1,32 @@
+{
+    "name": "onetoweb/mendrix-tms",
+    "description": "Mendrix TMS API Client",
+    "keywords": [
+        "api",
+        "php",
+        "mendrix-tms"
+    ],
+    "type": "library",
+    "homepage": "https://github.com/onetoweb/mendrix-tms",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonathan van 't Ende",
+            "email": "jvantende@onetoweb.nl"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "guzzlehttp/guzzle" : "^6.0 || ^7.0",
+        "spatie/array-to-xml": "^2.15",
+        "twig/twig": "^1.40|^2.9|^3.0"
+    },
+    "require-dev": {
+        "symfony/error-handler": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Onetoweb\\MendrixTms\\": "src/"
+        }
+    }
+}
