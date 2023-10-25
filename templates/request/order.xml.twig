@@ -7,58 +7,58 @@
             <EoOrderMx Type="TEoOrderMx">
                 {% if order.id is defined %}
                 <OrderId Type="TEoKeyIntInfraMx">
-                    <Id>{{ order.id|format_value }}</Id> {# OrderID in MendriX. Deze dient negatief te worden opgegeven. MendriX geeft zelf een OrderId terug in de respons. #}
+                    <Id>{{ order.id|format_value }}</Id>
                 </OrderId>
                 {% endif %}
                 {% if order.client_id is defined %}
                 <ClientId Type="TEoKeyIntInfraMx">
-                    <Id>{{ order.client_id|format_value }}</Id> {# Klantsleutel in MendriX van de Klant (Voor Intratuin is dit 1889 #}
+                    <Id>{{ order.client_id|format_value }}</Id>
                 </ClientId>
                 {% endif %}
                 {% if order.contact is defined %}
-                <Contact>{{ order.contact|format_value }}</Contact> {# Contactpersoon order van Intratuin #}
+                <Contact>{{ order.contact|format_value }}</Contact>
                 {% endif %}
                 {% if order.moment is defined %}
-                <Moment>{{ order.moment|format_value }}</Moment> {# Ordermoment #}
+                <Moment>{{ order.moment|format_value }}</Moment>
                 {% endif %}
                 <Notes></Notes>
                 {% if order.product_id is defined %}
                 <ProductId Type="TEoKeyIntInfraMx"> 
-                    <Id>{{ order.product_id|format_value }}</Id> {# ProductID uit MendriX om een tarief te krijgen op order #}
+                    <Id>{{ order.product_id|format_value }}</Id>
                 </ProductId>
                 {% endif %}
                 {% if order.product_id_automatic_articles is defined %}
                 <ProductIdAutomaticArticles>{{ order.product_id_automatic_articles|format_value }}</ProductIdAutomaticArticles>
                 {% endif %}
                 {% if order.goods is defined %}
-                <Goods Type="TEoGoodMxList"> {# VANAF HIER BEGINT GOEDERENINFORMATIE. #}
+                <Goods Type="TEoGoodMxList">
                     <_TEoListBase_Items>
                         {% for good in order.goods %}
-                        <EoGoodMx Type="TEoGoodMx">{# Eerste goederenregel #}
+                        <EoGoodMx Type="TEoGoodMx">
                             {% if good.id is defined %}
                             <GoodId Type="TEoKeyIntInfraMx">
-                                <Id>{{ good.id|format_value }}</Id> {# Geef een negatieve goodid op. Elke id in het bericht dient uniek te zijn #}
+                                <Id>{{ good.id|format_value }}</Id>
                             </GoodId>
                             {% endif %}
                             {% if good.barcode is defined %}
-                            <Barcode>{{ good.barcode|format_value }}</Barcode> {# Indien van toepassing #}
+                            <Barcode>{{ good.barcode|format_value }}</Barcode>
                             {% endif %}
                             {% if good.comments is defined %}
-                            <Comments>{{ good.comments|format_value }}</Comments> {# Omschrijving goed #}
+                            <Comments>{{ good.comments|format_value }}</Comments>
                             {% endif %}
                             {% if good.depth is defined %}
-                            <Depth>{{ good.depth|format_value }}</Depth> {# Diepte verpakking indien aanwezig #}
+                            <Depth>{{ good.depth|format_value }}</Depth>
                             {% endif %}
                             {% if good.height is defined %}
-                            <Height>{{ good.height|format_value }}</Height> {# Hoogte verpakking indien aanwezig #}
+                            <Height>{{ good.height|format_value }}</Height>
                             {% endif %}
                             {% if good.packing_type is defined %}
                             <Packing Type="TEoPackingMx">
-                                <Name>{{ good.packing_type|format_value }}</Name> {# Type verpakking, graag afstemmen met Jks #}
+                                <Name>{{ good.packing_type|format_value }}</Name>
                             </Packing>
                             {% endif %}
                             {% if good.parts is defined %}
-                            <Parts>{{ good.parts|format_value }}</Parts> {# Aantal delen verpakking #}
+                            <Parts>{{ good.parts|format_value }}</Parts>
                             {% endif %}
                             {% if good.volume is defined %}
                             <Volume>{{ good.volume|format_value }}</Volume>
@@ -70,10 +70,10 @@
                             <ArticleWeight>{{ good.article_weight|format_value }}</ArticleWeight>
                             {% endif %}
                             {% if good.weight is defined %}
-                            <Weight>{{ good.weight|format_value }}</Weight> {# Gewicht goederen #}
+                            <Weight>{{ good.weight|format_value }}</Weight>
                             {% endif %}
                             {% if good.width is defined %}
-                            <Width>{{ good.width|format_value }}</Width> {# Lengte verpakking indien aanwezig #}
+                            <Width>{{ good.width|format_value }}</Width>
                             {% endif %}
                         </EoGoodMx>
                         {% endfor %}
@@ -81,62 +81,62 @@
                 </Goods>
                 {% endif %}
                 {% if order.tasks is defined %}
-                <Tasks Type="TEoTaskMxList"> {# HIER BEGINNEN DE TAKEN #}
+                <Tasks Type="TEoTaskMxList">
                     <_TEoListBase_Items>
                         {% for task in order.tasks %}
-                        <EoTaskMx Type="TEoTaskMx"> {# Eerste Taak #}
+                        <EoTaskMx Type="TEoTaskMx">
                             {% if task.id is defined %}
                             <TaskId Type="TEoKeyIntInfraMx">
-                                <Id>{{ task.id|format_value }}</Id> {# Geef een negatieve TaakID op. Deze dient negatief te zijn en uniek binnen dit bericht. #}
+                                <Id>{{ task.id|format_value }}</Id>
                             </TaskId>
                             {% endif %}
                             {% if task.address is defined %}
                             <Address Type="TEoAddress">
                                 {% if task.address.name is defined %}
-                                <Name>{{ task.address.name|format_value }}</Name> {# Bedrijfsnaam klant voor afhaling #}
+                                <Name>{{ task.address.name|format_value }}</Name>
                                 {% endif %}
                                 {% if task.address.premise is defined %}
-                                <Premise>{{ task.address.premise|format_value }}</Premise> {# Contactpersoon klant voor afhaling #}
+                                <Premise>{{ task.address.premise|format_value }}</Premise>
                                 {% endif %}
                                 {% if task.address.street is defined %}
-                                <Street>{{ task.address.street|format_value }}</Street> {# Straatnaam + Huisnummer klant voor afhaling #}
+                                <Street>{{ task.address.street|format_value }}</Street>
                                 {% endif %}
                                 {% if task.address.number is defined %}
                                 <Number>{{ task.address.number|format_value }}</Number>
                                 {% endif %}
                                 {% if task.address.postal_code is defined %}
-                                <PostalCode>{{ task.address.postal_code|format_value }}</PostalCode> {# Postcode klant voor afhaling #}
+                                <PostalCode>{{ task.address.postal_code|format_value }}</PostalCode>
                                 {% endif %}
                                 {% if task.address.place is defined %}
-                                <Place>{{ task.address.place|format_value }}</Place> {# Plaatsnaam klant voor afhaling #}
+                                <Place>{{ task.address.place|format_value }}</Place>
                                 {% endif %}
                                 {% if task.address.state is defined %}
                                 <State>{{ task.address.state|format_value }}</State>
                                 {% endif %}
                                 {% if task.address.country is defined %}
-                                <Country>{{ task.address.country|format_value }}</Country> {# Landnaam klant voor afhaling #}
+                                <Country>{{ task.address.country|format_value }}</Country>
                                 {% endif %}
                                 {% if task.address.country_code is defined %}
-                                <CountryCode>{{ task.address.country_code|format_value }}</CountryCode> {# Landcode klant voor afhaling #}
+                                <CountryCode>{{ task.address.country_code|format_value }}</CountryCode>
                                 {% endif %}
                             </Address>
                             {% endif %}
                             {% if task.cash_on_delivery is defined %}
-                            <CashOnDelivery>{{ task.cash_on_delivery|format_value }}</CashOnDelivery> {# Rembours klant voor afhaling indien aanwezig #}
+                            <CashOnDelivery>{{ task.cash_on_delivery|format_value }}</CashOnDelivery>
                             {% endif %}
                             {% if task.connectivity is defined %}
                             <Connectivity Type="TEoConnectivity">
                                 {% if task.connectivity.email is defined %}
-                                <Email>{{ task.connectivity.email|format_value }}</Email> {# Emailadres klant voor afhaling #}
+                                <Email>{{ task.connectivity.email|format_value }}</Email>
                                 {% endif %}
                                 {% if task.connectivity.fax is defined %}
                                 <Fax>{{ task.connectivity.fax|format_value }}</Fax>
                                 {% endif %}
                                 {% if task.connectivity.mobile is defined %}
-                                <Mobile>{{ task.connectivity.mobile|format_value }}</Mobile> {# Mobiel telefoonnummer klant voor afhaling #}
+                                <Mobile>{{ task.connectivity.mobile|format_value }}</Mobile>
                                 {% endif %}
                                 {% if task.connectivity.phone is defined %}
-                                <Phone>{{ task.connectivity.phone|format_value }}</Phone> {# Vast telefoonnummer klant voor afhaling #}
+                                <Phone>{{ task.connectivity.phone|format_value }}</Phone>
                                 {% endif %}
                                 {% if task.connectivity.web is defined %}
                                 <Web>{{ task.connectivity.web|format_value }}</Web>
@@ -147,7 +147,7 @@
                             <ContactName>{{ task.contact_name|format_value }}</ContactName>
                             {% endif %}
                             {% if task.instructions is defined %}
-                            <Instructions>{{ task.instructions|format_value }}</Instructions> {# Instructies chauffeur voor afhaling #}
+                            <Instructions>{{ task.instructions|format_value }}</Instructions>
                             {% endif %}
                             {% if task.operator_id_automatic is defined %}
                             <OperatorIdAutomatic>{{ task.operator_id_automatic|format_value }}</OperatorIdAutomatic>
@@ -159,21 +159,21 @@
                             <ReferenceOur>{{ task.reference_our|format_value }}</ReferenceOur>
                             {% endif %}
                             {% if task.reference_your is defined %}
-                            <ReferenceYour>{{ task.reference_your|format_value }}</ReferenceYour> {# Uw kenmerk klant voor afhaling #}
+                            <ReferenceYour>{{ task.reference_your|format_value }}</ReferenceYour>
                             {% endif %}
                             {% if task.requested is defined %}
                             <Requested Type="TEoDateTimeWindow">
                                 {% if task.requested.date_time_end is defined %}
-                                <DateTimeEnd>{{ task.requested.date_time_end|format_value }}</DateTimeEnd> {# Afhaling gewenst tot #}
+                                <DateTimeEnd>{{ task.requested.date_time_end|format_value }}</DateTimeEnd>
                                 {% endif %}
                                 {% if task.requested.date_time_begin is defined %}
-                                <DateTimeBegin>{{ task.requested.date_time_begin|format_value }}</DateTimeBegin> {# Afhaling gewenst vanaf #}
+                                <DateTimeBegin>{{ task.requested.date_time_begin|format_value }}</DateTimeBegin>
                                 {% endif %}
                             </Requested>
                             {% endif %}
                             {% if task.task_type_id is defined %}
                             <TaskTypeId Type="TEoKeyIntInfraMx">
-                                <Id>{{ task.task_type_id|format_value }}</Id> {# Bepaald het taaktype. 1 is laden en 2 is lossen.  #}
+                                <Id>{{ task.task_type_id|format_value }}</Id>
                             </TaskTypeId>
                             {% endif %}
                         </EoTaskMx>
@@ -182,18 +182,18 @@
                 </Tasks>
                 {% endif %}
                 {% if order.goods_to_tasks is defined %}
-                <GoodsToTasks Type="TEoGoodToTaskMxList"> {# HIER WORDEN TAKEN GEKOPPELD AAN GOEDEREN #}
+                <GoodsToTasks Type="TEoGoodToTaskMxList">
                     <_TEoListBase_Items>
                         {% for good_to_tasks in order.goods_to_tasks %}
                         <EoGoodToTaskMx Type="TEoGoodToTaskMx">
                             {% if good_to_tasks.good_id is defined %}
                             <GoodId Type="TEoKeyIntInfraMx">
-                                <Id>{{ good_to_tasks.good_id|format_value }}</Id> {# Good ID welke gekoppeld moet worden #}
+                                <Id>{{ good_to_tasks.good_id|format_value }}</Id>
                             </GoodId>
                             {% endif %}
                             {% if good_to_tasks.task_id is defined %}
                             <TaskId Type="TEoKeyIntInfraMx">
-                                <Id>{{ good_to_tasks.task_id|format_value }}</Id> {# Task ID waaraan deze gekoppeld moet worden #}
+                                <Id>{{ good_to_tasks.task_id|format_value }}</Id>
                             </TaskId>
                             {% endif %}
                         </EoGoodToTaskMx>
