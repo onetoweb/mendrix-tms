@@ -5,35 +5,35 @@
     <Data Type="TEoOrderMxList">
         <_TEoListBase_Items>
             <EoOrderMx Type="TEoOrderMx">
-                {% if order.id is defined %}
+                {% if request.id is defined %}
                 <OrderId Type="TEoKeyIntInfraMx">
-                    <Id>{{ order.id|format_value }}</Id>
+                    <Id>{{ request.id|format_value }}</Id>
                 </OrderId>
                 {% endif %}
-                {% if order.client_id is defined %}
+                {% if request.client_id is defined %}
                 <ClientId Type="TEoKeyIntInfraMx">
-                    <Id>{{ order.client_id|format_value }}</Id>
+                    <Id>{{ request.client_id|format_value }}</Id>
                 </ClientId>
                 {% endif %}
-                {% if order.contact is defined %}
-                <Contact>{{ order.contact|format_value }}</Contact>
+                {% if request.contact is defined %}
+                <Contact>{{ request.contact|format_value }}</Contact>
                 {% endif %}
-                {% if order.moment is defined %}
-                <Moment>{{ order.moment|format_value }}</Moment>
+                {% if request.moment is defined %}
+                <Moment>{{ request.moment|format_value }}</Moment>
                 {% endif %}
                 <Notes></Notes>
-                {% if order.product_id is defined %}
+                {% if request.product_id is defined %}
                 <ProductId Type="TEoKeyIntInfraMx"> 
-                    <Id>{{ order.product_id|format_value }}</Id>
+                    <Id>{{ request.product_id|format_value }}</Id>
                 </ProductId>
                 {% endif %}
-                {% if order.product_id_automatic_articles is defined %}
-                <ProductIdAutomaticArticles>{{ order.product_id_automatic_articles|format_value }}</ProductIdAutomaticArticles>
+                {% if request.product_id_automatic_articles is defined %}
+                <ProductIdAutomaticArticles>{{ request.product_id_automatic_articles|format_value }}</ProductIdAutomaticArticles>
                 {% endif %}
-                {% if order.goods is defined %}
+                {% if request.goods is defined %}
                 <Goods Type="TEoGoodMxList">
                     <_TEoListBase_Items>
-                        {% for good in order.goods %}
+                        {% for good in request.goods %}
                         <EoGoodMx Type="TEoGoodMx">
                             {% if good.id is defined %}
                             <GoodId Type="TEoKeyIntInfraMx">
@@ -80,10 +80,10 @@
                     </_TEoListBase_Items>
                 </Goods>
                 {% endif %}
-                {% if order.tasks is defined %}
+                {% if request.tasks is defined %}
                 <Tasks Type="TEoTaskMxList">
                     <_TEoListBase_Items>
-                        {% for task in order.tasks %}
+                        {% for task in request.tasks %}
                         <EoTaskMx Type="TEoTaskMx">
                             {% if task.id is defined %}
                             <TaskId Type="TEoKeyIntInfraMx">
@@ -181,10 +181,10 @@
                     </_TEoListBase_Items>
                 </Tasks>
                 {% endif %}
-                {% if order.goods_to_tasks is defined %}
+                {% if request.goods_to_tasks is defined %}
                 <GoodsToTasks Type="TEoGoodToTaskMxList">
                     <_TEoListBase_Items>
-                        {% for good_to_tasks in order.goods_to_tasks %}
+                        {% for good_to_tasks in request.goods_to_tasks %}
                         <EoGoodToTaskMx Type="TEoGoodToTaskMx">
                             {% if good_to_tasks.good_id is defined %}
                             <GoodId Type="TEoKeyIntInfraMx">
@@ -201,11 +201,11 @@
                     </_TEoListBase_Items>
                 </GoodsToTasks>
                 {% endif %}
-                {% if order.external_done is defined %}
-                <ExternalDone>{{ order.external_done|format_value }}</ExternalDone>
+                {% if request.external_done is defined %}
+                <ExternalDone>{{ request.external_done|format_value }}</ExternalDone>
                 {% endif %}
-                {% if order.external_source is defined %}
-                <ExternalSource>{{ order.external_source|format_value }}</ExternalSource>
+                {% if request.external_source is defined %}
+                <ExternalSource>{{ request.external_source|format_value }}</ExternalSource>
                 {% endif %}
             </EoOrderMx>
         </_TEoListBase_Items>

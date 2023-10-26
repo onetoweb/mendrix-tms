@@ -62,10 +62,23 @@ class Client
      * 
      * @return string
      */
+    public function getRequestXml(string $template, array $param = []): string
+    {
+        return $this->twig->render("request/$template.xml.twig", [
+            'request' => $param
+        ]);
+    }
+    
+    /**
+     * @param string $template
+     * @param array $param = []
+     * 
+     * @return string
+     */
     public function getXml(string $template, array $param = []): string
     {
         // get request
-        $request = $this->twig->render("request/$template.xml.twig", $param);
+        $request = $this->getRequestXml($template, $param);
         
         return $this->twig->render('envelope.xml.twig', [
             'username' => $this->username,
