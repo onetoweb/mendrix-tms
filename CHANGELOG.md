@@ -11,3 +11,7 @@
 ## [1.0.2] - 2023-10-26
 
  - Added getRequestXml method to client
+
+## [1.0.3] - 2023-10-26
+
+ - bugfix get orders, get order ids
