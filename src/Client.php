@@ -94,9 +94,7 @@ class Client
      */
     public function getOrderIds(array $data): ?array
     {
-        $result = $this->soapRequest('get_order_ids', [
-            'request' => $data
-        ]);
+        $result = $this->soapRequest('get_order_ids', $data);
         
         if (isset($result['EoCustomLinkResponseOrdersNormalIds']['Data']['_TEoListBase_Items']['EoKeyInt'])) {
             
@@ -118,9 +116,7 @@ class Client
      */
     public function getOrders(array $data): ?array
     {
-        $result = $this->soapRequest('get_orders', [
-            'request' => $data
-        ]);
+        $result = $this->soapRequest('get_orders', $data);
         
         if (isset($result['EoCustomLinkResponseOrdersNormal']['Data']['_TEoListBase_Items']['EoOrderMx'])) {
             return $result['EoCustomLinkResponseOrdersNormal']['Data']['_TEoListBase_Items']['EoOrderMx'];
