@@ -15,3 +15,7 @@
 ## [1.0.3] - 2023-10-26
 
  - bugfix get orders, get order ids
+
+## [2.0.0] - 2026-10-07
+
+ - bugfix get orders, get order ids

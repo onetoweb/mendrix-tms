@@ -15,21 +15,6 @@ use DateTime;
 class Client
 {
     /**
-     * @var string
-     */
-    private $baseUrl;
-    
-    /**
-     * @var string
-     */
-    private $username;
-    
-    /**
-     * @var string
-     */
-    private $password;
-    
-    /**
      * @var Environment
      */
     private $twig;
@@ -39,12 +24,17 @@ class Client
      * @param string $user
      * @param string $password
      */
-    public function __construct(string $baseUrl, string $username, string $password)
-    {
-        $this->baseUrl = $baseUrl;
-        $this->username = $username;
-        $this->password = $password;
+    public function __construct(
         
+        #[\SensitiveParameter]
+        private string $baseUrl,
+        
+        #[\SensitiveParameter]
+        private string $username,
+        
+        #[\SensitiveParameter]
+        private string $password
+    ) {
         $this->setupTwig();
     }
     
